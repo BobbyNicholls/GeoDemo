@@ -1,3 +1,7 @@
 aws-elastic-beanstalk-cli-setup/
 aonenv/
 .idea/
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
