@@ -1,1 +1,1 @@
-web: streamlit run app/app.py --server.port=$PORT
+web: streamlit run app/map_app.py --server.port=$PORT
