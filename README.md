@@ -9,3 +9,4 @@
  - Move from trunk development to having an intermediary 'dev' / 'development' branch, maybe even 'uat' if needed.
  - Integrate with backend databases and S3 buckets
  - Set up unit tests, ensure sufficient coverage
+ - Add shift-left pipeline, or use Quodana / Sonar / etc
