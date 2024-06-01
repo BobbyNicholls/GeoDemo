@@ -1,2 +1,6 @@
 streamlit
 requests
+
+#mapping modules
+folium
+streamlit_folium
