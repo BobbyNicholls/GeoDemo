@@ -12,3 +12,4 @@
  - Add shift-left pipeline, or use Quodana / Sonar / etc
  - Add documentation
  - Add architecture diagram
+ - Type enforcement and assertions around the API to handle bad data / requests well
