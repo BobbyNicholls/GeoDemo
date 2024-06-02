@@ -10,3 +10,5 @@
  - Integrate with backend databases and S3 buckets
  - Set up unit tests, ensure sufficient coverage
  - Add shift-left pipeline, or use Quodana / Sonar / etc
+ - Add documentation
+ - Add architecture diagram
