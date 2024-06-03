@@ -6,7 +6,7 @@ payload = {
     "origin_latitude": 51.47168,
     "origin_longitude": -2.62186,
     "destination_latitude": 51.4545,
-    "destination_longitude": -2.5879
+    "destination_longitude": -2.5879,
 }
 # headers = {
 #     "Content-Type": "application/json"
