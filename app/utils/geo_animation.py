@@ -39,8 +39,7 @@ def create_feature(bird_data: pd.DataFrame):
     return feature
 
 
-def get_time_stamped_geo_json(path_to_data: str = "C:/dev/geo_birds/data/bustard.csv"):
-    data = pd.read_csv(path_to_data)
+def get_time_stamped_geo_json(data: pd.DataFrame):
     birds = data["device_id"].unique()
     features = [create_feature(data[data["device_id"] == bird]) for bird in birds]
     return TimestampedGeoJson(

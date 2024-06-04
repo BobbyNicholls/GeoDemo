@@ -1,5 +1,8 @@
+import pandas as pd
+
 import requests
 import json
+from io import StringIO
 
 url = "https://2gs5g97rxd.execute-api.eu-west-2.amazonaws.com/sandbox"
 payload = {
@@ -16,3 +19,5 @@ payload = {
 response = requests.post(url, data=json.dumps(payload))
 print("Status Code:", response.status_code)
 print("Response Body:", response.json())
+
+df = pd.read_csv(StringIO(response.json()["geo_data"]))
