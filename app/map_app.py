@@ -6,6 +6,8 @@ import requests
 import streamlit as st
 from streamlit_folium import folium_static
 
+from utils.geo_animation import get_time_stamped_geo_json
+
 
 def get_lat_longs(
     payload: Dict[str, float],
@@ -27,6 +29,8 @@ destination_longitude = st.sidebar.text_input("Enter destination longitude:", ""
 
 # the_downs = [51.47168, -2.62186]
 # bristol = [51.4545, -2.5879]
+# germany_origin = [52.20031, 12.6059]
+# germany_destination = [52.18538, 12.67741]
 
 if st.sidebar.button("Submit"):
     payload = {
@@ -39,10 +43,11 @@ if st.sidebar.button("Submit"):
     origin = [lat_longs["param1"], lat_longs["param2"]]
     destination = [lat_longs["param3"], lat_longs["param4"]]
     st.title("Interactive World Map")
-    m = folium.Map(location=origin, zoom_start=13)
-    folium.Marker(origin, popup="Origin").add_to(m)
-    folium.Marker(destination, popup="Destination").add_to(m)
-    folium_static(m)
+    folium_map = folium.Map(location=origin, zoom_start=10)
+    folium.Marker(origin, popup="Origin").add_to(folium_map)
+    folium.Marker(destination, popup="Destination").add_to(folium_map)
+    get_time_stamped_geo_json().add_to(folium_map)
+    folium_static(folium_map)
 
 else:
     st.write("Please enter values in the sidebar and click 'Submit'.")

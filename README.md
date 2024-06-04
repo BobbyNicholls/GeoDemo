@@ -10,6 +10,6 @@
  - Integrate with backend databases and S3 buckets
  - Set up unit tests, ensure sufficient coverage
  - Add shift-left pipeline, or use Quodana / Sonar / etc
- - Add documentation
+ - Add documentation, including docstrings in functions
  - Add architecture diagram
  - Type enforcement and assertions around the API to handle bad data / requests well
