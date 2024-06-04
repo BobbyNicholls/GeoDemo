@@ -18,20 +18,31 @@ def get_lat_longs(
     raise ValueError(f"API failed with status code {response.status_code}")
 
 
-the_downs = [51.47168, -2.62186]
-bristol = [51.4545, -2.5879]
-payload = {
-    "origin_latitude": the_downs[0],
-    "origin_longitude": the_downs[1],
-    "destination_latitude": bristol[0],
-    "destination_longitude": bristol[1],
-}
-lat_longs = get_lat_longs(payload)
+st.title("Simple Map App")
+st.sidebar.title("Input Lat/Longs:")
+origin_latitude = st.sidebar.text_input("Enter origin latitude:", "")
+origin_longitude = st.sidebar.text_input("Enter origin longitude:", "")
+destination_latitude = st.sidebar.text_input("Enter destination latitude:", "")
+destination_longitude = st.sidebar.text_input("Enter destination longitude:", "")
 
-st.title("Interactive World Map")
-m = folium.Map(location=the_downs, zoom_start=13)
-folium.Marker([lat_longs["param1"], lat_longs["param2"]], popup="Park").add_to(m)
-folium.Marker([lat_longs["param3"], lat_longs["param4"]], popup="Bristol").add_to(m)
+# the_downs = [51.47168, -2.62186]
+# bristol = [51.4545, -2.5879]
 
-# Display the map in Streamlit
-folium_static(m)
+if st.sidebar.button("Submit"):
+    payload = {
+        "origin_latitude": origin_latitude,
+        "origin_longitude": origin_longitude,
+        "destination_latitude": destination_latitude,
+        "destination_longitude": destination_longitude,
+    }
+    lat_longs = get_lat_longs(payload)
+    origin = [lat_longs["param1"], lat_longs["param2"]]
+    destination = [lat_longs["param3"], lat_longs["param4"]]
+    st.title("Interactive World Map")
+    m = folium.Map(location=origin, zoom_start=13)
+    folium.Marker(origin, popup="Origin").add_to(m)
+    folium.Marker(destination, popup="Destination").add_to(m)
+    folium_static(m)
+
+else:
+    st.write("Please enter values in the sidebar and click 'Submit'.")
