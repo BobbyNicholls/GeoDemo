@@ -1,6 +1,7 @@
 ## Basic outline
 
 ## Changelog
+ - 1.0.1 added time series geo-spatial animation to map
 
 ## Things I would do if I had more time / this was not a demo
  - AWS CodePipeline to version control my lambda functions and other code, also to do CI/CD
