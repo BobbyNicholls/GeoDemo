@@ -1,7 +1,7 @@
 import boto3
 import sagemaker
-from sagemaker.amazon.amazon_estimator import get_image_uri
 from sagemaker import get_execution_role
+from sagemaker.amazon.amazon_estimator import get_image_uri
 
 session = sagemaker.Session(boto3.Session(region_name="eu-west-2"))
 role = get_execution_role()
