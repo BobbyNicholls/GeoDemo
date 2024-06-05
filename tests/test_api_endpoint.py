@@ -1,8 +1,8 @@
-import pandas as pd
-
-import requests
 import json
 from io import StringIO
+
+import pandas as pd
+import requests
 
 url = "https://2gs5g97rxd.execute-api.eu-west-2.amazonaws.com/sandbox"
 payload = {

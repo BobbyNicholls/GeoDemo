@@ -1,6 +1,6 @@
 import json
-from typing import Dict
 from io import StringIO
+from typing import Dict
 
 import folium
 import pandas as pd

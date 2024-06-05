@@ -1,7 +1,7 @@
 """functions for getting animated mapping functions"""
 
-from folium.plugins import TimestampedGeoJson
 import pandas as pd
+from folium.plugins import TimestampedGeoJson
 
 
 def create_feature(bird_data: pd.DataFrame):
