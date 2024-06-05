@@ -48,7 +48,9 @@ if st.sidebar.button("Submit"):
     folium_map = folium.Map(location=origin, zoom_start=10)
     folium.Marker(origin, popup="Origin").add_to(folium_map)
     folium.Marker(destination, popup="Destination").add_to(folium_map)
-    get_time_stamped_geo_json(pd.read_csv(StringIO(geo_data["geo_data"]))).add_to(folium_map)
+    get_time_stamped_geo_json(pd.read_csv(StringIO(geo_data["geo_data"]))).add_to(
+        folium_map
+    )
     folium_static(folium_map, width=1050, height=750)
 
 else:
