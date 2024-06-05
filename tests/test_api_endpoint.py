@@ -21,3 +21,4 @@ print("Status Code:", response.status_code)
 print("Response Body:", response.json())
 
 df = pd.read_csv(StringIO(response.json()["geo_data"]))
+print(df.head())
