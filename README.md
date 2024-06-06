@@ -14,3 +14,5 @@
  - Add documentation, including docstrings in functions
  - Add architecture diagram
  - Type enforcement and assertions around the API to handle bad data / requests well
+ - Host on a proper domain with sso etc
+ - Model training and deployment should not be in the same repo
