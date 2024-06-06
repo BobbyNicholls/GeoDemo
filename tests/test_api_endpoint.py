@@ -11,11 +11,7 @@ payload = {
     "destination_latitude": 51.4545,
     "destination_longitude": -2.5879,
 }
-# headers = {
-#     "Content-Type": "application/json"
-# }
 
-# response = requests.post(url, headers=headers, data=json.dumps(payload))
 response = requests.post(url, data=json.dumps(payload))
 print("Status Code:", response.status_code)
 print("Response Body:", response.json())
