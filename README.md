@@ -2,6 +2,7 @@
 
 ## Changelog
  - 1.0.1 added time series geo-spatial animation to map
+ - 1.0.2 added sagemaker geospatial ML model training and deployment
 
 ## Things I would do if I had more time / this was not a demo
  - AWS CodePipeline to version control my lambda functions and other code, also to do CI/CD
