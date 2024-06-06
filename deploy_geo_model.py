@@ -15,5 +15,5 @@ model = Model(
 predictor = model.deploy(
     initial_instance_count=1,
     instance_type="ml.t2.medium",
-    endpoint_name="geo-model-endpoint1",
+    endpoint_name="geo-model-endpoint",
 )

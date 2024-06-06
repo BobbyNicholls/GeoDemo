@@ -21,5 +21,3 @@ xgb = sagemaker.estimator.Estimator(
 
 xgb.set_hyperparameters(objective="reg:squarederror.", num_round=3)
 xgb.fit({"train": "s3://time-series-geo-data/bustard.libsvm"})
-
-model_artifact = "s3://your-bucket/path/to/model.tar.gz"
