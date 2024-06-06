@@ -7,7 +7,6 @@ import pandas as pd
 import requests
 import streamlit as st
 from streamlit_folium import folium_static
-
 from utils.geo_animation import get_time_stamped_geo_json
 
 
