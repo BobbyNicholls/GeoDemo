@@ -33,7 +33,7 @@ germany_destination = [52.18538, 12.67741]
 
 if st.sidebar.button("Submit"):
     payload = {"date": str(selected_date)}
-    geo_data = StringIO(get_geo_data(payload)["geo_data"])
+    geo_data = get_geo_data(payload)
     geo_data["date"] = [str(pd.to_datetime(date).date()) for date in geo_data["UTC_timestamp"]]
     geo_data = geo_data[geo_data["date"] == selected_date].sort_values("UTC_timestamp")
     start_latitude = geo_data["Latitude"].iloc[0]
