@@ -9,7 +9,7 @@
  - Use poetry manage package versioning to ensure compatibility
  - Dockerise / containerise my deployments, integrate with poetry
  - Move from trunk development to having an intermediary 'dev' / 'development' branch, maybe even 'uat' if needed.
- - Integrate with backend databases and S3 buckets
+ - Get data in to sql
  - Set up unit tests, ensure sufficient coverage
  - Add shift-left pipeline, or use Quodana / Sonar / etc
  - Add documentation, including docstrings in functions
