@@ -14,10 +14,10 @@ from utils.geo_animation import get_time_stamped_geo_json
 def get_geo_data(
     payload: Dict[str, str],
     url: str = "https://2gs5g97rxd.execute-api.eu-west-2.amazonaws.com/sandbox",
-):
+) -> pd.DataFrame:
     response = requests.post(url, data=json.dumps(payload))
     if response.status_code == 200:
-        return response.json()
+        return pd.read_csv(StringIO(response.json()["geo_data"]))
 
     raise ValueError(f"API failed with status code {response.status_code}")
 
@@ -33,7 +33,7 @@ germany_destination = [52.18538, 12.67741]
 
 if st.sidebar.button("Submit"):
     payload = {"date": str(selected_date)}
-    geo_data = get_geo_data(payload)
+    geo_data = StringIO(get_geo_data(payload)["geo_data"])
     geo_data["date"] = [str(pd.to_datetime(date).date()) for date in geo_data["UTC_timestamp"]]
     geo_data = geo_data[geo_data["date"] == selected_date].sort_values("UTC_timestamp")
     start_latitude = geo_data["Latitude"].iloc[0]
