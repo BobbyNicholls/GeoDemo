@@ -24,7 +24,9 @@ def get_geo_data(
 
 st.title("Simple Map App")
 st.sidebar.title("Input Lat/Longs:")
-selected_date = st.sidebar.date_input("Select a date", pd.to_datetime("2020-04-19").date())
+selected_date = str(
+    st.sidebar.date_input("Select a date", pd.to_datetime("2020-03-01").date())
+)
 
 # the_downs = [51.47168, -2.62186]
 # bristol = [51.4545, -2.5879]
@@ -34,15 +36,15 @@ germany_destination = [52.18538, 12.67741]
 if st.sidebar.button("Submit"):
     payload = {"date": str(selected_date)}
     geo_data = get_geo_data(payload)
-    geo_data["date"] = [str(pd.to_datetime(date).date()) for date in geo_data["UTC_timestamp"]]
+    geo_data["date"] = [
+        str(pd.to_datetime(timestamp).date()) for timestamp in geo_data["UTC_timestamp"]
+    ]
     geo_data = geo_data[geo_data["date"] == selected_date].sort_values("UTC_timestamp")
     start_latitude = geo_data["Latitude"].iloc[0]
     start_longitude = geo_data["Longitude"].iloc[0]
     st.write("Interactive World Map")
     folium_map = folium.Map(location=[start_latitude, start_longitude], zoom_start=10)
-    get_time_stamped_geo_json(pd.read_csv(StringIO(geo_data["geo_data"]))).add_to(
-        folium_map
-    )
+    get_time_stamped_geo_json(geo_data).add_to(folium_map)
     folium_static(folium_map, width=1050, height=750)
 
 else:
