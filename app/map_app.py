@@ -28,11 +28,6 @@ selected_date = str(
     st.sidebar.date_input("Select a date", pd.to_datetime("2020-03-01").date())
 )
 
-# the_downs = [51.47168, -2.62186]
-# bristol = [51.4545, -2.5879]
-# germany_origin = [52.20031, 12.6059]
-germany_destination = [52.18538, 12.67741]
-
 if st.sidebar.button("Submit"):
     payload = {"date": str(selected_date)}
     geo_data = get_geo_data(payload)
