@@ -24,7 +24,7 @@ def get_geo_data(
 
 st.title("Simple Map App")
 st.sidebar.title("Input Lat/Longs:")
-selected_date = st.sidebar.date_input("Select a date", datetime.now())
+selected_date = st.sidebar.date_input("Select a date", pd.to_datetime("2020-04-19").date())
 
 # the_downs = [51.47168, -2.62186]
 # bristol = [51.4545, -2.5879]
