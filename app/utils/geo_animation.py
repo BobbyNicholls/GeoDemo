@@ -28,12 +28,6 @@ def create_feature(bird_data: pd.DataFrame):
         "properties": {
             "times": list(bird_data["UTC_timestamp"]),
             "style": {"color": color_map[bird_data["device_id"].iloc[0]]},
-            "icon": "bird",
-            "iconstyle": {
-                "iconSize": [20, 20],
-                "iconUrl": "https://cdn3.iconfinder.com/data/icons/birds-1/100/bird_%s-512.png"
-                % str(bird_data["device_id"].iloc[0]).lower(),
-            },
         },
     }
     return feature
