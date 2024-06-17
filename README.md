@@ -1,6 +1,7 @@
 ## Basic outline
 
 ## Changelog
+- 1.0.3 added date filtering, so you can specify and compare dates
 - 1.0.2 added sagemaker geospatial ML model training and deployment 
 - 1.0.1 added time series geo-spatial animation to map
 

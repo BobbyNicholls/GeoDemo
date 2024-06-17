@@ -7,21 +7,22 @@ from utils.geo_animation import get_time_stamped_geo_json
 
 st.title("Bustard Map App")
 st.sidebar.title("Input date you want to review:")
-selected_date = str(
-    st.sidebar.date_input("Select a date", pd.to_datetime("2020-03-01").date())
-)
+selected_dates = [
+    str(st.sidebar.date_input("Select a date", pd.to_datetime("2020-03-01").date(), key=key))
+    for key in range(3)
+]
 
 if st.sidebar.button("Submit"):
-    payload = {"date": str(selected_date)}
+    payload = {"date": str(selected_dates[0])}
     geo_data = get_geo_data(payload)
     geo_data["date"] = [
         str(pd.to_datetime(timestamp).date()) for timestamp in geo_data["UTC_timestamp"]
     ]
-    geo_data = geo_data[geo_data["date"] == selected_date].sort_values("UTC_timestamp")
+    geo_data = geo_data[geo_data["date"].isin(selected_dates)].sort_values("UTC_timestamp")
     if len(geo_data) > 0:
         start_latitude = geo_data["Latitude"].iloc[0]
         start_longitude = geo_data["Longitude"].iloc[0]
-        st.write(f"Movements on {selected_date}")
+        st.write(f"Movements on {selected_dates}")
         folium_map = folium.Map(
             location=[start_latitude, start_longitude], zoom_start=16
         )
