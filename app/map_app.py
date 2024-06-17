@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 from io import StringIO
 from typing import Dict
 
@@ -14,12 +13,16 @@ from utils.geo_animation import get_time_stamped_geo_json
 def get_geo_data(
     payload: Dict[str, str],
     url: str = "https://2gs5g97rxd.execute-api.eu-west-2.amazonaws.com/sandbox",
+    request_from_endpoint: bool = False,
 ) -> pd.DataFrame:
-    response = requests.post(url, data=json.dumps(payload))
-    if response.status_code == 200:
-        return pd.read_csv(StringIO(response.json()["geo_data"]))
+    if request_from_endpoint:
+        response = requests.post(url, data=json.dumps(payload))
+        if response.status_code == 200:
+            return pd.read_csv(StringIO(response.json()["geo_data"]))
 
-    raise ValueError(f"API failed with status code {response.status_code}")
+        raise ValueError(f"API failed with status code {response.status_code}")
+
+    return pd.read_csv("C:/dev/geo_birds/data/bustard_small.csv")
 
 
 st.title("Simple Map App")
