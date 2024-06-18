@@ -5,6 +5,18 @@ from folium.plugins import TimestampedGeoJson
 
 
 def create_feature(feature_data: pd.DataFrame, offset):
+    colours = [
+        "red",
+        "blue",
+        "green",
+        "orange",
+        "purple",
+        "darkred",
+        "darkblue",
+        "darkgreen",
+        "cadetblue",
+        "gray",
+    ]
     feature = {
         "type": "Feature",
         "geometry": {
@@ -14,8 +26,10 @@ def create_feature(feature_data: pd.DataFrame, offset):
             ),
         },
         "properties": {
-            "times": list((feature_data["UTC_timestamp"] - pd.DateOffset(days=offset)).astype(str)),
-            "style": {"color": "Blue"},
+            "times": list(
+                (feature_data["UTC_timestamp"] - pd.DateOffset(days=offset)).astype(str)
+            ),
+            "style": {"color": colours[offset]},
         },
     }
     return feature
