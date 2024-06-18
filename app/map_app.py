@@ -12,7 +12,7 @@ st.sidebar.title(
 selected_date = st.sidebar.date_input(
     "Select a date", pd.to_datetime("2020-03-01").date()
 )
-number_of_days = st.sidebar.number_input("Number of days", min_value=1, max_value=10)
+number_of_days = st.sidebar.number_input("Number of days", min_value=1, max_value=30)
 
 if st.sidebar.button("Submit"):
     selected_dates = pd.date_range(
