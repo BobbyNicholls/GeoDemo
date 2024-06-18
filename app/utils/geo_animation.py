@@ -29,7 +29,7 @@ def create_feature(feature_data: pd.DataFrame, offset):
             "times": list(
                 (feature_data["UTC_timestamp"] - pd.DateOffset(days=offset)).astype(str)
             ),
-            "style": {"color": colours[offset]},
+            "style": {"color": colours[offset % len(colours)]},
         },
     }
     return feature
