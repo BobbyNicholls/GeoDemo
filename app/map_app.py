@@ -2,6 +2,7 @@ import folium
 import pandas as pd
 import streamlit as st
 from streamlit_folium import folium_static
+from utils.data_preprocessing import clean_geo_data
 from utils.data_transfer import get_geo_data
 from utils.geo_animation import get_time_stamped_geo_json
 
@@ -20,13 +21,7 @@ if st.sidebar.button("Submit"):
     ).astype(str)
     payload = {"date": str(selected_dates[0])}
     geo_data = get_geo_data(payload)
-    geo_data["UTC_timestamp"] = pd.to_datetime(geo_data["UTC_timestamp"])
-    geo_data["date"] = [
-        str(timestamp.date()) for timestamp in geo_data["UTC_timestamp"]
-    ]
-    geo_data = geo_data[geo_data["date"].isin(selected_dates)].sort_values(
-        "UTC_timestamp"
-    )
+    geo_data = clean_geo_data(geo_data, selected_dates)
     if len(geo_data) > 0:
         start_latitude = geo_data["Latitude"].iloc[0]
         start_longitude = geo_data["Longitude"].iloc[0]
